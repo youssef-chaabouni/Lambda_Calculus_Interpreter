@@ -86,16 +86,43 @@ Different other sytaxes are also supported by the interpreter:
   </li>
 </ul>
   </li>
-
   <li>
-  <b>Line-editing with history and Backward/Forward editing:</b><br>
+  <b>Line-editing with history and Backward/Forward editing:</b>
 
 The console supports the following operations:
-- Up button `↑` : Go backward in the history of commands.
-- Down button `↓` : Go forward in the history of commands.
-- Left button `←` : Go backward in the line currently being edited.
-- Right button `→` : Go forward in the line currently being edited.
+<ul>
+<li>
 
+Up button `↑` : Go backward in the history of commands.</li>
+<li>
+
+Down button `↓` : Go forward in the history of commands.</li>
+<li>
+
+Left button `←` : Go backward in the line currently being edited.</li>
+<li>
+
+Right button `→` : Go forward in the line currently being edited.</li>
+</ul>
+  </li>
+  <li>
+  <b>Parsing errors:</b><br>
+
+  Whenever a parsing error is encountered, the whole line is ignored and the interpreter keeps listening to the standard input.
+
+Examples:
+
+```
+  Lambda> x = -1
+  Parsing error in: `x = -1`
+  Lambda> ▮
+```
+
+```
+  Lambda> \f.\x.f y
+  Variable not in scope: y
+  Lambda> ▮
+```
   </li>
 </ul>
 
@@ -133,6 +160,19 @@ or
   
   This will evaluate the expression to its <a href="https://en.wikipedia.org/wiki/Beta_normal_form">beta-normal form</a>, and print the result.
   </li>
+  <li>
+  <b>Quit the interpreter:</b><br>
+  You can quit the interpreter using either of the syntaxes:
+
+```
+  Lambda> :quit
+```
+or
+
+```
+  Lambda> :q
+```
+  </li>
 </ul>
 
 ## Credits
@@ -147,6 +187,6 @@ This project was done in the scope of the course <i>CSE301: Functional Programmi
 
 Some parts of the code in this repository were provided in the assignment, and some of the ideas were inspired from materials seen in class.
 
-### Others resources
+### Other resources
 - <a href="https://hackage.haskell.org/package/haskeline-0.8.2/docs/System-Console-Haskeline-IO.html">Haskeline Documentation</a>
 - <a href="https://stackoverflow.com/a/23070727">Stack Overflow</a>

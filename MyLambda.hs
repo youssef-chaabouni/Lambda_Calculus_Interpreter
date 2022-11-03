@@ -69,8 +69,7 @@ repl = go []                                          -- start the interpreter i
                   return ()
 
                 Error str -> do             -- Error
-                  liftIO $ putStrLn "Parsing error in:"
-                  liftIO $ putStrLn str
+                  liftIO $ putStrLn ("Parsing error in: `" ++ str ++ "`")
                   >> go env
 
 main :: IO ()
