@@ -1,7 +1,7 @@
 # Lambda_Calculus_Interpreter
 An interactive console for lambda calculus.
 
-## Clone the project
+## <div id="clone">Clone the project</div>
 
 ```bash
   $ git clone https://github.com/youssef-chaabouni/Lambda_Calculus_Interpreter
@@ -9,8 +9,10 @@ An interactive console for lambda calculus.
 
 ## Usage
 
+In order to be able to use <b>Lambda_Calculus_Interpreter</b>, make sure you have <a href="https://www.haskell.org/ghc/">GHC</a>.
+
 ### Run the interpreter
-Once you clone project (section <b>"Clone the project"</b> above), you can preceed to creating the executable for the Lambda Calculus Interpreter:
+Once you <a href="#clone">clone the project</a>, you can proceed to creating the executable for the Lambda Calculus Interpreter:
 
 <ol>
   <li>
@@ -174,6 +176,31 @@ or
 ```
   </li>
 </ul>
+
+Example:
+
+```
+  $ ./MyLambda
+  Lambda> zero = \f.\x.x
+  Lambda> one = \f.\x.f x
+  Lambda> succ = \n.\f.\x.f (n f x)
+  Lambda> two = suc one
+  Variable not in scope: suc
+  Lambda> two = succ one
+  Lambda> three = succ two
+  Lambda> add = \m.\n.m succ n
+  Lambda> mul = \m.\n.m (add n) zero
+  Lambda> exp = \m.\n.n (mul m) one
+  Lambda> add two three
+  \f.\x.f (f (f (f (f x))))
+  Lambda> mul two three
+  \f.\x.f (f (f (f (f (f x)))))
+  Lambda> exp two three
+  \f.\x.f (f (f (f (f (f (f (f x)))))))
+  Lambda> :quit
+  Leaving Lambda Calculus Interpreter.
+  Goodbye :)
+```
 
 ## Credits
 
