@@ -36,6 +36,42 @@ Run the interpreter:
   </li>
 </ol>
 
+### Front-End
+<ul>
+  <li>
+  <b>The console:</b><br>
+
+The interpreter offers an interactive console for Lambda calculus to the user.
+
+```
+  >
+```
+  </li>
+
+  <li>
+  <b>Lambda Expressions:</b><br>
+
+Lambda Expressions are represented in a <a href="https://en.wikipedia.org/wiki/Lambda_calculus">human-friendly format</a>.
+
+e.g.
+
+```
+  > my_lambda_expression = \f.\x.f x
+```
+  </li>
+
+  <li>
+  <b>Line-editing with history and Backward/Forward editing:</b><br>
+
+The console supports the following operations:
+- Up button `↑` : Go backward in the history of commands.
+- Down button `↓` : Go forward in the history of commands.
+- Left button `←` : Go backward in the line currently being edited.
+- Right button `→` : Go forward in the line currently being edited.
+
+  </li>
+</ul>
+
 ### Commands
 
 Two types of commands are supported by the interpreter:
@@ -72,21 +108,8 @@ or
   </li>
 </ul>
 
-### Quit the interpreter
+## Credits
 
-You can quit the interpreter by either of the commands:
-
-```
-  > :quit
-```
-
-or
-
-```
-  > :q
-```
-
-## Credit
 ### Authors
 Jean Sébastien Gaultier<br>
 John Levy<br>
@@ -95,4 +118,8 @@ Youssef Chaabouni<br>
 ### University
 This project was done in the scope of the course <i>CSE301: Functional Programming</i> at <i>Ecole Polytechnique</i>.
 
-Parts of the code in this repository were provided in the assignment, and some of the ideas were inspired from materials seen in class.
+Some parts of the code in this repository were provided in the assignment, and some of the ideas were inspired from materials seen in class.
+
+### Others resources
+- <a href="https://hackage.haskell.org/package/haskeline-0.8.2/docs/System-Console-Haskeline-IO.html">Haskeline Documentation</a>
+- <a href="https://en.wikipedia.org/wiki/Beta_normal_form">Stack Overflow</a>
