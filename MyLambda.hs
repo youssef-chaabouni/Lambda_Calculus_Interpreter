@@ -57,7 +57,7 @@ repl = go []                     -- start the interpreter in an empty environmen
 main = repl
 
 
---Let "zero" (L"f" (L"x" (V"x")))
+-- > Let "zero" (L"f" (L"x" (V"x")))
 -- > Let "id" (L"x" (V"x"))
 -- > Eval (A (V"id") (V"zero"))
 -- L "f" (L "x" (V "x"))
