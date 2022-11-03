@@ -38,7 +38,7 @@ Run the interpreter:
 
 ### Commands
 
-Two types of commands are covered by the interpreter:
+Two types of commands are supported by the interpreter:
 
 <ul>
   <li>

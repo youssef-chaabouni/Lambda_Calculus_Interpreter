@@ -1,7 +1,7 @@
 all: My_Lambda
 
 My_Lambda: ./MyLambda.hs
-	ghc -O2 MyLambda
+	ghc -O2 MyLambda -package haskeline
 
 clean:
 	rm -f ./MyLambda
