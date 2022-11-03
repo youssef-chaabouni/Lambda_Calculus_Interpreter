@@ -58,6 +58,33 @@ Example:
 ```
   Lambda> my_lambda_expression = \f.\x.f x
 ```
+
+Different other sytaxes are also supported by the interpreter:
+<ul>
+  <li>
+
+  Use of the backslash `\` equivalently to the lambda symbol `λ`.
+
+  Example:
+
+```
+  Lambda> \f.\x.f x
+  \f.\x.f x
+  Lambda> λf.λx.f x
+  \f.\x.f x
+```
+  </li>
+  <li>
+  Support for <a href="https://en.wikipedia.org/wiki/Lambda_calculus">Haskell</a>-like syntax.
+
+  Example:
+
+```
+  Lambda> \f x y -> f y x
+  \f.\x.\y.f y x
+```
+  </li>
+</ul>
   </li>
 
   <li>
