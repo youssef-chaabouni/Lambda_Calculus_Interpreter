@@ -41,7 +41,7 @@ Run the interpreter:
   <li>
   <b>The console:</b><br>
 
-The interpreter offers an interactive console for Lambda calculus to the user.
+The interpreter offers an interactive console for Lambda calculus:
 
 ```
   >
@@ -53,7 +53,7 @@ The interpreter offers an interactive console for Lambda calculus to the user.
 
 Lambda Expressions are represented in a <a href="https://en.wikipedia.org/wiki/Lambda_calculus">human-friendly format</a>.
 
-e.g.
+Example:
 
 ```
   > my_lambda_expression = \f.\x.f x
@@ -91,7 +91,7 @@ or
 ```
   where:
   - `'variable_name'` stands for the name of the variable.
-  - `'expression'` stands for the Lambda-expression we want to assign.
+  - `'expression'` stands for the Lambda Expression we want to assign.
   
   Once the variable is defined, it can then be used to refer to the assigned expression in the rest of the interaction with the interpreter (unless it is shadowed by another assignment).
   </li>
@@ -122,4 +122,4 @@ Some parts of the code in this repository were provided in the assignment, and s
 
 ### Others resources
 - <a href="https://hackage.haskell.org/package/haskeline-0.8.2/docs/System-Console-Haskeline-IO.html">Haskeline Documentation</a>
-- <a href="https://en.wikipedia.org/wiki/Beta_normal_form">Stack Overflow</a>
+- <a href="https://stackoverflow.com/a/23070727">Stack Overflow</a>
