@@ -5,9 +5,4 @@ My_Lambda: ./MyLambda.hs
 
 clean:
 	rm -f ./MyLambda
-	rm -f ./Cmd.hi ./Cmd.o
-	rm -f ./Eval.hi ./Eval.o
-	rm -f ./Expr.hi ./Expr.o
-	rm -f ./MyLambda.hi ./MyLambda.o
-	rm -f ./PrettyExpr.hi ./PrettyExpr.o
-	rm -f ./Subst.hi ./Subst.o
+	rm -f ./*.hi ./*.o
