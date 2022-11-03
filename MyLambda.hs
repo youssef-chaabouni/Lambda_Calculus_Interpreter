@@ -2,6 +2,7 @@ import Expr
 import Cmd
 import Subst
 import Eval
+import Parser
 
 import Data.List
 import System.IO
@@ -23,7 +24,7 @@ repl = go []                     -- start the interpreter in an empty environmen
       putStr "> "                -- print the prompt
       hFlush stdout              -- flush standard output
       line <- getLine            -- get a line of input
-      let cmd = read line        -- parse the input as a command
+      let Just(cmd, _) = runParser parseCmd line  -- parse the input as a command
       case cmd of                
           Eval t ->              -- execute an eval command
             -- the expression to be evaluated cannot have any free

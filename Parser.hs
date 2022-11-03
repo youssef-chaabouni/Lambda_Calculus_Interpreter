@@ -9,7 +9,7 @@ import Data.Char
 import Control.Applicative
 
 -- We begin by defining the type of parsers for a type:
-newtype Parser a = Parser { runParser :: String -> Maybe (a,String) }
+newtype Parser a = Parser { runParser :: String -> Maybe (a, String) }
 
 -- The idea is that a value of type Parser a is something that takes a
 -- string as input, and tries to parse a prefix of the input as a value
