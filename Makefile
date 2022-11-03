@@ -1,6 +1,6 @@
 all: My_Lambda
 
-My_Lambda: My_Lambda.hs
+My_Lambda: ./MyLambda.hs
 	ghc -O2 MyLambda
 
 clean:
