@@ -25,7 +25,7 @@ fresh xs = head (filter (`notElem` xs) names)
 -- ################### 
 -- Test for sbst function 
 -- test cases
--- write the following lambsa expressions using types defined in Expre.hs
+-- write the following lambda expressions using types defined in Expr.hs
 -- e = (x(\xy.x))[d/x] = d(\xy.x)
 -- subst ()
 e1 = L "x" (A (V "x") (V "y"))
