@@ -40,6 +40,11 @@ alphaEq (A t1 u1) (A t2 u2) = alphaEq t1 t2 && alphaEq u1 u2
 alphaEq (L x1 t1) (L x2 t2) = alphaEq t1 (swapname (x2,x1) t2)
 alphaEq _         _         = False
 
+-- create a nested lambda abstraction
+nestedLambdaAbst :: [Var] -> LExp -> LExp
+nestedLambdaAbst []     e = e
+nestedLambdaAbst (x:xs) e = nestedLambdaAbst xs (L x e)
+
 -- equality of lambda expressions is given by alpha-equivalence
 instance Eq LExp where
   t1 == t2 = alphaEq t1 t2

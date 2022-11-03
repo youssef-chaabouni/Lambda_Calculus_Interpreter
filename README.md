@@ -44,7 +44,7 @@ Run the interpreter:
 The interpreter offers an interactive console for Lambda calculus:
 
 ```
-  >
+  Lambda>
 ```
   </li>
 
@@ -56,7 +56,7 @@ Lambda Expressions are represented in a <a href="https://en.wikipedia.org/wiki/L
 Example:
 
 ```
-  > my_lambda_expression = \f.\x.f x
+  Lambda> my_lambda_expression = \f.\x.f x
 ```
   </li>
 
@@ -82,12 +82,12 @@ Two types of commands are supported by the interpreter:
   Variables can be defined using either of the syntaxes:
 
 ```
-  > 'variable_name' = 'expression'
+  Lambda> 'variable_name' = 'expression'
 ```
 or
 
 ```
-  > let 'variable_name' = 'expression'
+  Lambda> let 'variable_name' = 'expression'
 ```
   where:
   - `'variable_name'` stands for the name of the variable.
@@ -100,7 +100,7 @@ or
   Expressions can be evaluated using the syntax:
 
 ```
-  > 'expression'
+  Lambda> 'expression'
 ```
   where `'expression'` stands for the Lambda-expression we want to assign.
   

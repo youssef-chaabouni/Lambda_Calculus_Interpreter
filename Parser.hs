@@ -98,6 +98,12 @@ alphanum = sat isAlphaNum
 space :: Parser Char
 space = sat isSpace
 
+-- parse an arrow
+arrow :: Parser Char
+arrow = do
+  char '-'
+  char '>'
+
 -- parse a specific string of characters
 string :: String -> Parser String
 string []     = return []
@@ -156,16 +162,29 @@ var = do
 -- as a sequence of applications.
 
 parseLExp :: Parser LExp
-parseLExp = parseLam <|> parseApps
+parseLExp = parseLam <|> parseLamHaskell <|> parseApps
 
 -- Parse a lambda abstraction expression.
 parseLam :: Parser LExp
 parseLam = do
   char '\\' <|> char 'λ'        -- parse backslash or unicode λ for the lambda symbol
   x <- var                      -- parse a variable name
+  spaces
   char '.'                      -- parse a dot
+  spaces
   t <- parseLExp                -- parse an expression
   return (L x t)                -- return the lambda abstraction
+
+-- Parse a lambda abstraction expression in Haskell-like syntax.
+parseLamHaskell :: Parser LExp
+parseLamHaskell = do
+  char '\\' <|> char 'λ'                              -- parse backslash or unicode λ for the lambda symbol
+  xs <- separatedBy var spaces                        -- parse multiple variable names
+  spaces
+  arrow                                               -- parse an arrow
+  spaces
+  t <- parseLExp                                      -- parse an expression
+  return (nestedLambdaAbst (reverse xs) t)            -- return the lambda abstraction
 
 -- Parse a left-nested sequence of applications.
 parseApps :: Parser LExp
@@ -184,7 +203,7 @@ parseVar = var >>= \x -> return (V x)
 
 -- Parse a command.
 parseCmd :: Parser Cmd
-parseCmd = parseEval <|> parseLet <|> parseNoop <|> parseQuit
+parseCmd = parseEval <|> parseLet <|> parseNoop <|> parseQuit <|> parseError
 
 -- Parse an eval command.
 parseEval :: Parser Cmd
@@ -209,6 +228,7 @@ parseLet = do
 -- Parse a no-op command
 parseNoop :: Parser Cmd
 parseNoop = do
+  spaces
   end
   return Noop
 
@@ -218,3 +238,10 @@ parseQuit = do
   string ":quit" <|> string ":q"
   end
   return Quit
+
+-- Parse an Error
+parseError :: Parser Cmd
+parseError = do
+  err <- list item
+  end
+  return (Error err)
