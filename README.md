@@ -202,7 +202,7 @@ Example:
   Goodbye :)
 ```
 
-## Credits
+## Acknowledgements
 
 ### Authors
 Jean Sébastien Gaultier<br>
