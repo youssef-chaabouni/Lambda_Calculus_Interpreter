@@ -2,17 +2,19 @@ module Subst (subst) where
 
 import Expr
 
+import Data.List
+
 -- substitution of a term for a variable in an expression
 -- case 1: e = \x.e' a lambda expression binding x, then x is shadowed by the abstraction and we return the abstraction unchanged
--- case2: e = \y.e' a lambda expression binding y, that is not in the free variables of d; then we can safely substitue into the body of the abtraction and abstract the result. 
--- case 3: e = \y.e' a lambda expression binding y, that IS free in d, we alpha-convert he lambda expression to use a fresh variable z e'{z/y} -> swap z for y in e'
+-- case 2: e = \y.e' a lambda expression binding y, that is not in the free variables of d; then we can safely substitue into the body of the abtraction and abstract the result. 
+-- case 3: e = \y.e' a lambda expression binding y, that IS free in d, we alpha-convert the lambda expression to use a fresh variable z e'{z/y} -> swap z for y in e'
 
 subst :: (LExp,Var) -> LExp -> LExp
 subst (d, x) e = case e of
     V y -> if x == y then d else e
     A e1 e2 -> A (subst (d,x) e1) (subst (d,x) e2)
     L y e1 -> if x == y then
-        let z = fresh (free d) in
+        let z = fresh (y:((free d) `union` (free e1))) in
             L z (subst (d,x) (swapname (y,z) e1))
         else L y (subst (d,x) e1)
 
