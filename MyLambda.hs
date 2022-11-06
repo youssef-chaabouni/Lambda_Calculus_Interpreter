@@ -23,6 +23,7 @@ type Repl a = InputT IO a
 goFromFile :: Env -> [String] -> Repl ()
 goFromFile env [] = go env
 goFromFile env (inst:insts) = do
+  liftIO $ putStrLn ("Lambda> " ++ inst)
   case runParser parseCmd inst of             -- parse the input as a command
     Nothing -> do
       liftIO $ putStrLn "Parse Error!"
@@ -59,8 +60,9 @@ goFromFile env (inst:insts) = do
           liftIO $ putStrLn "Goodbye :)"
           return ()
 
-        --Load filename -> do             -- execute a load command, by executing instructions in 'filename'
-        --  return ()
+        Load filename -> do             -- nested file imports are prohibited
+          liftIO $ putStrLn "WARNING: Nested file imports are prohibited!"
+          >> goFromFile env insts
 
         Error str -> do             -- Error
           liftIO $ putStrLn ("Parsing error in: `" ++ str ++ "`")
@@ -112,6 +114,7 @@ go env = do
 
             Load filename -> do             -- execute a load command, by executing instructions in 'filename'
               file <- liftIO $ readFile (filename)
+              liftIO $ putStrLn ("Importing " ++ filename ++ " ...")
               goFromFile env (lines file)
 
             Error str -> do             -- Error

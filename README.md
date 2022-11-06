@@ -130,11 +130,12 @@ Examples:
 
 ### Commands
 
-Two types of commands are supported by the interpreter:
+Four types of commands are supported by the interpreter:
 
 <ul>
   <li>
   <b>Variable definition:</b><br>
+  
   Variables can be defined using either of the syntaxes:
 
 ```
@@ -153,6 +154,7 @@ or
   </li>
   <li>
   <b>Expression evaluation:</b><br>
+
   Expressions can be evaluated using the syntax:
 
 ```
@@ -163,7 +165,24 @@ or
   This will evaluate the expression to its <a href="https://en.wikipedia.org/wiki/Beta_normal_form">beta-normal form</a>, and print the result.
   </li>
   <li>
+  <b>Load instructions from file:</b><br>
+
+  You can load instructions from a file using the syntax:
+
+```
+  Lambda> :load 'filename'
+```
+  where `'filename'` stands for the name of the file.
+
+  Example:
+
+```
+  Lambda> :load resources/church.lam
+```
+  </li>
+  <li>
   <b>Quit the interpreter:</b><br>
+
   You can quit the interpreter using either of the syntaxes:
 
 ```
