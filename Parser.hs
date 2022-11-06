@@ -109,6 +109,12 @@ string :: String -> Parser String
 string []     = return []
 string (c:cs) = char c >> string cs >> return (c:cs)
 
+-- parse a file name
+fileName :: Parser String
+fileName = do
+  cs <- list (sat (/=' '))
+  return cs
+
 -- the paren parser combinator turns a parser of something into a
 -- parser of something wrapped in parentheses
 paren :: Parser a -> Parser a
@@ -203,7 +209,7 @@ parseVar = var >>= \x -> return (V x)
 
 -- Parse a command.
 parseCmd :: Parser Cmd
-parseCmd = parseEval <|> parseLet <|> parseNoop <|> parseQuit <|> parseError
+parseCmd = parseEval <|> parseLet <|> parseNoop <|> parseQuit <|> parseLoad <|> parseError
 
 -- Parse an eval command.
 parseEval :: Parser Cmd
@@ -245,3 +251,13 @@ parseError = do
   err <- list item
   end
   return (Error err)
+
+-- Parse a Load
+parseLoad :: Parser Cmd
+parseLoad = do
+  string ":load"
+  spaces
+  filename <- fileName
+  spaces
+  end
+  return (Load filename)
