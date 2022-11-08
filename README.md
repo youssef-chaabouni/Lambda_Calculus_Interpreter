@@ -160,7 +160,7 @@ or
 ```
   Lambda> 'expression'
 ```
-  where `'expression'` stands for the Lambda-expression we want to assign.
+  where `'expression'` stands for the Lambda-expression we want to evaluate.
   
   This will evaluate the expression to its <a href="https://en.wikipedia.org/wiki/Beta_normal_form">beta-normal form</a>, and print the result.
   </li>
